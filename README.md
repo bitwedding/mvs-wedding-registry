@@ -2,12 +2,10 @@
   <a href="https://www.mvs.org/">
     <img src="images/logo.png" alt="Metaverse">
   </a>
-  <h1>Metaverse Blockchain Wedding Registry</h1>
+  <h1 align="center">Metaverse Blockchain Wedding Registry</h1>
 </p>
 
-
 # How to use
-
 The easiest way to startup the services is using docker compose. It will automaticlly download and start all dependencies.
 
 # Listing feed
