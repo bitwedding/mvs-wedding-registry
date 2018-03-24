@@ -1,4 +1,4 @@
-FROM daocloud.io/node
+FROM node
 
 # Set the work directory
 RUN mkdir -p /var/www/app
