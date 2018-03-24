@@ -2,9 +2,9 @@
   <a href="https://www.mvs.org/">
     <img src="images/logo.png" alt="Metaverse">
   </a>
+  <h1>Metaverse Blockchain Wedding Registry</h1>
 </p>
 
-# Metaverse Blockchain Wedding Registry
 
 # How to use
 
