@@ -3,10 +3,10 @@ version: '2'
 services:
         redis:
                 image: redis
-        mvsd:
-                image: cangr/mvsd:0.7.5
-                environment:
-                        - ENVIRONMENT=-t
+        # mvsd:
+        #         image: cangr/mvsd:0.7.5
+        #         environment:
+        #                 - ENVIRONMENT=-t
         mongodb:
                 image: library/mongo
         router:
