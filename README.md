@@ -1,4 +1,10 @@
-# mvs-wedding-registry
+<p align="center">
+  <a href="https://www.mvs.org/">
+    <img src="images/logo.png" alt="Metaverse">
+  </a>
+</p>
+
+# Metaverse Blockchain Wedding Registry
 
 # How to use
 
