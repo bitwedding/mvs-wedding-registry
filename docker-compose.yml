@@ -1,6 +1,8 @@
 version: '2'
 
 services:
+        redis:
+                image: redis
         mvsd:
                 image: cangr/mvsd:0.7.5
                 environment:
@@ -21,3 +23,13 @@ services:
                         - PROVIDE_TASK=listings
                         - MONGO_HOST=mongodb
                         - LISTINGS_TIMER=5000
+        api:
+                build: api
+                environment:
+                        - MONGO_HOST=mongodb
+                        - REDIS_HOST=redis
+                links:
+                        - redis
+                        - mongodb
+                ports:
+                        - "80:80"
