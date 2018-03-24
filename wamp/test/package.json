@@ -1,0 +1,14 @@
+{
+  "name": "mvs-wedding-wamp-tester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "listings.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "autobahn": "^17.5.2"
+  }
+}
