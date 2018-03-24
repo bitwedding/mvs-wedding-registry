@@ -1,9 +1,6 @@
 exports.app = {
+    "pagesize": (process.env.PAGESIZE) ? process.env.PAGESIZE : 10,
     "http": {
-        "port": "80"
-    },
-    "logging": {
-        "enable": true,
-        "path": "./logs"
+        "port": (process.env.PORT) ? process.env.PORT : '80'
     }
 };

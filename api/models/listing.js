@@ -6,7 +6,8 @@ var config = require('../config/config.js');
 
 module.exports = {
     create: create,
-    fetch: fetch
+    fetch: fetch,
+    list: list
 };
 
 function fetch(id) {
@@ -17,10 +18,25 @@ function fetch(id) {
             }, {
                 _id: 0
             }).then((doc) => {
-                console.log('doc: ' + doc);
                 return doc;
             });
         });
+}
+
+function list(upper, pagesize) {
+    return new Promise((resolve,reject)=>{
+     mongo.connect()
+        .then((db) => {
+            return db.collection('listing').find({
+                id: { "$lt": upper}
+            }, {
+                _id: 0
+            }).sort({id:-1}).limit(pagesize).toArray((err, listings) => {
+                if(err) throw Error('ERR_LIST_LISTINGS');
+                resolve(listings);
+            });
+        });
+    });
 }
 
 function getNextSequence(name) {

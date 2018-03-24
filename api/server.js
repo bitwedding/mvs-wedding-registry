@@ -31,22 +31,17 @@ app.all('/*', (req, res, next) => {
     next();
 });
 
-//Configure logging
-if (config.app.logging.enable) {
-    var morgan = require('morgan');
-    // setup the file logger
-    app.use(morgan('combined'));
-    app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
-}
-
 //Define routes
 app.use(router.routes);
 
-//Strartup the services
+//Startup the services
 function start() {
+    console.info("List %i listings per page", config.app.pagesize);
+    if(!process.env.PAGESIZE)
+        console.info("To adjust pagesize set environment variable PAGESIZE");
     //Load http service
     if (config.app.http.port != undefined && config.app.http.port != '') {
-        app.listen(config.app.http.port, () => console.info('Public API server running on port ' + config.app.http.port));
+        app.listen(config.app.http.port, () => console.info('API server running on port ' + config.app.http.port));
     }
 };
 

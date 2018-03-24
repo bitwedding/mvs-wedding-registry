@@ -29,6 +29,16 @@ const onlyStatus200 = (req, res) => res.statusCode === 200,
 router.get('/listing/:id', longCacheSuccess, ListingCtrl.FetchListing);
 
 /**
+ * List listings that are older than the given listing.
+ * @route GET /listings/{upper}
+ * @param {number} upper.path.required - Upper limit for listings
+ * @group listing - Operations about listings
+ * @returns {object} 200 - Listing list
+ */
+router.get('/listings/:upper', longCacheSuccess, ListingCtrl.ListListings);
+
+
+/**
  * Post a new listing.
  * @route POST /listing
  * @group listing - Operations about listings
