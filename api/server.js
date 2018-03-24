@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 //HTTP Method overwriter to set error response codes
 var methodOverride = require('method-override');
+var message = require('./models/message.js');
 app.use(methodOverride());
 app.use((err, req, res, next) => {
     res.status(500).json(message(0, 'ERR_SERVER_ERROR'));

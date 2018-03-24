@@ -64,14 +64,13 @@ function getNextSequence(name) {
         });
 }
 
-function create(male, female, date) {
+function create(partners, date) {
     return getNextSequence("listingid")
         .then((id) => {
             return mongo.connect()
                 .then((db) => db.collection('listing').insertOne({
                     id: id,
-                    male: male,
-                    female: female,
+                    partners: partners,
                     date: date
                 }))
                 .then(() => id);

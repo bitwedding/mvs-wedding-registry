@@ -2,7 +2,6 @@ let autobahn = require('autobahn'),
     config = require('./config/config.js'),
     autobahn_config = require('./config/autobahn.js');
 
-
 function onchallenge(session, method, extra) {
     if (method === "wampcra") {
         return autobahn.auth_cra.sign(autobahn_config.key, extra.challenge);
@@ -10,7 +9,6 @@ function onchallenge(session, method, extra) {
         return null;
     }
 }
-
 
 var connection = new autobahn.Connection({
     url: autobahn_config.url,

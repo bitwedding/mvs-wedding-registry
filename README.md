@@ -42,7 +42,7 @@ You can tell from the 2nd parameter of the data ("i" or "u").
 # API
 Create listing:
 ```
-curl -X POST -d '{"male": "haensel", "female":"graetel", "date": "2013-05-27"}'  -H "Content-Type: application/json" http://127.0.0.1/listing
+curl -X POST -d '{"partners": [ { "name": "haensel" }, { "name":"graetel" } ], "date": "2013-05-27"}'  -H "Content-Type: application/json" http://127.0.0.1/listing
 ```
 Get listing by id:
 ```
