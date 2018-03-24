@@ -24,18 +24,23 @@ function fetch(id) {
 }
 
 function list(upper, pagesize) {
-    return new Promise((resolve,reject)=>{
-     mongo.connect()
-        .then((db) => {
-            return db.collection('listing').find({
-                id: { "$lt": upper}
-            }, {
-                _id: 0
-            }).sort({id:-1}).limit(pagesize).toArray((err, listings) => {
-                if(err) throw Error('ERR_LIST_LISTINGS');
-                resolve(listings);
+    return new Promise((resolve, reject) => {
+        mongo.connect()
+            .then((db) => {
+                return db.collection('listing')
+                    .find({
+                        id: {
+                            "$lt": upper
+                        }
+                    }, {
+                        _id: 0
+                    }).sort({
+                        id: -1
+                    }).limit(pagesize).toArray((err, listings) => {
+                        if (err) throw Error('ERR_LIST_LISTINGS');
+                        resolve(listings);
+                    });
             });
-        });
     });
 }
 
@@ -49,7 +54,13 @@ function getNextSequence(name) {
                         seq: 1
                     }
                 })
-                .then(ret => ret.value.seq);
+                .then(ret => {
+                    if(ret.value){
+                        return ret.value.seq;
+                    } else{
+                        return db.collection('counters').insertOne({_id: name, seq: 2}).then(()=>1);
+                    }
+                });
         });
 }
 
