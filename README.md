@@ -40,7 +40,7 @@ You can tell from the 2nd parameter of the data ("i" or "u").
 # API
 Create listing:
 ```
-curl -X POST -d '{"partners": [ { "name": "haensel" }, { "name":"graetel" } ], "date": "2013-05-27"}'  -H "Content-Type: application/json" http://127.0.0.1/listing
+curl -X POST -d '{"partners": [ { "name": "haensel" }, { "name":"graetel" } ], "date": "2013-05-27"}' -H "captcha: test"  -H "Content-Type: application/json" http://127.0.0.1/listing
 ```
 Get listing by id:
 ```
@@ -49,6 +49,10 @@ curl -X GET "http://127.0.0.1:80/listing/:id"
 List listings:
 ```
 curl -X GET "http://127.0.0.1:80/listings/:older_than_id"
+```
+Get captcha to add listing:
+```
+curl -X GET "http://127.0.0.1:80/captcha"
 ```
 
 ## API configuration
@@ -62,3 +66,9 @@ curl -X GET "http://127.0.0.1:80/listings/:older_than_id"
 | MONGO_NAME           | MongoDB database name                |  registry |
 | REDIS_HOST           | Redis host                           | 127.0.0.1 |
 | REDIS_PORT           | Redis Port                           |      6379 |
+| CAPTCHA_LENGTH       | Length of captcha code               |         6 |
+| CAPTCHA_BLACKLIST    | Blacklist characters                 |      0oli |
+| CAPTCHA_COLOR        | Colorize the characters              |      true |
+| CAPTCHA_BACKGROUND   | Background color                     |   #ffffff |
+| CAPTCHA_NOISE        | Number of lines to add noise         |         1 |
+| CAPTCHA_EXPIRE       | Expiration time in seconds           |        60 |
