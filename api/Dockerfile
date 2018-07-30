@@ -16,4 +16,4 @@ COPY . /var/www/app
 
 EXPOSE 80
 
-CMD ["forever", "--minUptime", "100", "--spinSleepTime", "10", "server.js"]
+CMD ["node", "server.js"]

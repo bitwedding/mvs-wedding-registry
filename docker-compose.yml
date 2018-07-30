@@ -4,17 +4,19 @@ services:
         redis:
                 image: redis
         mvsd:
-                image: cangr/mvsd:0.7.5
+                image: mvsorg/mvsd
                 environment:
                         - ENVIRONMENT=-t
         mongodb:
                 image: library/mongo
         router:
                 build: wamp/router
+                restart: always
                 ports:
                         - "8080:8080"
         provider:
                 build: wamp/provider
+                restart: always
                 environment:
                         - ROUTER_URL=ws://router:8080/ws
                         - REALM=realm1
@@ -27,6 +29,7 @@ services:
                         - mongodb
         api:
                 build: api
+                restart: always
                 environment:
                         - MONGO_HOST=mongodb
                         - REDIS_HOST=redis

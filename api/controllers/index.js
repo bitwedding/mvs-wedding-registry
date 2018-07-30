@@ -3,6 +3,7 @@ let express = require('express'),
 
 //Load controllers
 let ListingCtrl = require('./ListingCtrl.js');
+let CaptchaCtrl = require('./CaptchaCtrl.js');
 
 //Caching
 let apicache = require('apicache'),
@@ -27,6 +28,8 @@ const onlyStatus200 = (req, res) => res.statusCode === 200,
  * @returns {object} 200 - Listing details
  */
 router.get('/listing/:id', longCacheSuccess, ListingCtrl.FetchListing);
+
+router.get('/captcha', CaptchaCtrl.get);
 
 /**
  * List listings that are older than the given listing.
